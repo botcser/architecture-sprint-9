@@ -1,0 +1,24 @@
+@startuml
+!include <C4/C4_Container>
+!include <C4/C4_Deployment>
+!include <C4/C4_Component>
+!include <archimate/Archimate>
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/Archimate-PlantUML/master/Archimate.puml
+
+
+AddRelTag("dashed", $lineStyle = DashedLine())
+
+Person(UserAlias, "User")
+
+System(ABS, "ABS", " Интерфейс пользователей")
+System(IB, "IB", "Internet Bank")
+System(CC, "CC", "Call Center")
+System_Ext(PCC, "Partner Call Center")
+
+Rel(UserAlias, CC, "[Ask]", $tags="dashed")
+Rel(CC, IB, "[Get Bet Info?]", $tags="dashed")
+Rel(CC, ABS, "[Get User Info]", $tags="dashed")
+Rel(PCC, IB, "[Get Bet Info?]", $tags="dashed")
+Rel(PCC, CC, "[Get Bet Info?]", $tags="dashed")
+
+@enduml
